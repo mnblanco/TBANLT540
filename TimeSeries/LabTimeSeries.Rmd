@@ -1,0 +1,53 @@
+---
+title: "TimeSeriesLab"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+
+```{r}
+library(readxl)
+library(forecast)
+
+TimeSeriesLabData <- read_excel("LabTimeSeries/TimeSeriesLabData.xlsx")
+
+ts<-as.ts(TimeSeriesLabData, frequency=12, start=c(63, 7))
+
+plot.ts(TimeSeriesLabData)
+
+plot.ts(ts)
+
+View (ts)
+
+ts
+
+
+#fraser.forecast2 <- forecast.HoltWinters(fraser.forecast, h=8)
+
+acf(TimeSeriesLabData$ibm, lag.max = NULL,
+    type = c("correlation", "covariance", "partial"),
+    plot = TRUE, na.action = na.fail, demean = TRUE)
+
+acf(TimeSeriesLabData$xerox, lag.max = NULL,
+    type = c("correlation", "covariance", "partial"),
+    plot = TRUE, na.action = na.fail, demean = TRUE)
+
+Box.test(TimeSeriesLabData$ibm, lag = 1, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$ibm, lag = 2, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$ibm, lag = 3, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$ibm, lag = 4, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$ibm, lag = 5, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$ibm, lag = 6, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+
+Box.test(TimeSeriesLabData$xerox, lag = 1, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$xerox, lag = 2, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$xerox, lag = 3, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$xerox, lag = 4, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$xerox, lag = 5, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+Box.test(TimeSeriesLabData$xerox, lag = 6, type = c("Box-Pierce", "Ljung-Box"), fitdf = 0)
+
+```
