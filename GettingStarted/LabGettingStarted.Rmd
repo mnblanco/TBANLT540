@@ -17,7 +17,7 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 	library(readr)
 	library("ggplot2")
 
-cpsa2016_cpsaat03_clean <- read_delim("LabGettingStarted/cpsa2016_cpsaat03_clean.csv", 
+cpsa2016_cpsaat03_clean <- read_delim("GettingStarted/cpsa2016_cpsaat03_clean.csv", 
 	                                      "\t", escape_double = FALSE, trim_ws = TRUE)
 	#View(cpsa2016_cpsaat03_clean)
 ```

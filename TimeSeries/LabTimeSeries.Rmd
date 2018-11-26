@@ -13,7 +13,7 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 library(readxl)
 library(forecast)
 
-TimeSeriesLabData <- read_excel("LabTimeSeries/TimeSeriesLabData.xlsx")
+TimeSeriesLabData <- read_excel("TimeSeries/TimeSeriesLabData.xlsx")
 
 ts<-as.ts(TimeSeriesLabData, frequency=12, start=c(63, 7))
 
@@ -21,9 +21,7 @@ plot.ts(TimeSeriesLabData)
 
 plot.ts(ts)
 
-View (ts)
 
-ts
 
 
 #fraser.forecast2 <- forecast.HoltWinters(fraser.forecast, h=8)
